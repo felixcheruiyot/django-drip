@@ -54,8 +54,8 @@ class SentDrip(models.Model):
     """
     date = models.DateTimeField(auto_now_add=True)
 
-    drip = models.ForeignKey('drip.Drip', related_name='sent_drips')
-    user = models.ForeignKey(getattr(settings, 'AUTH_USER_MODEL', 'auth.User'), related_name='sent_drips')
+    drip = models.ForeignKey('drip.Drip', related_name='sent_drips', on_delete=models.CASCADE)
+    user = models.ForeignKey(getattr(settings, 'AUTH_USER_MODEL', 'auth.User'), related_name='sent_drips', on_delete=models.CASCADE)
 
     subject = models.TextField()
     body = models.TextField()
